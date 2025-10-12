@@ -35,7 +35,7 @@ Example:
 
 1. Click **“Add Custom Windows Event Logs”**.
 2. Set the **Integration Name** to:  
-   `my-dfir-win-sysmon`
+   `araizii-win-sysmon`
 3. Add a **Description**:  
    `Collect Sysmon logs`
 4. For the **Channel Name**, open **Event Viewer** on your Windows Server:
@@ -43,7 +43,7 @@ Example:
    - Right-click **Operational → Properties** and copy the **Full Name** (this is your channel name).
 5. Paste the channel name into the Kibana integration form.
 6. Leave **Data Set** and other options as default.
-7. Assign this integration to your existing host by selecting the **Agent Policy** (e.g., `my-dfir-windows-policy`).
+7. Assign this integration to your existing host by selecting the **Agent Policy** (e.g., `araizii-windows-policy`).
 8. Click **Save and Continue**, then **Save and Deploy Changes**.
 
 Your Sysmon integration is now added to your policy.
@@ -54,7 +54,7 @@ Your Sysmon integration is now added to your policy.
 
 1. Click **“Add Custom Windows Event Logs”** again.
 2. Name it:  
-   `my-dfir-win-defender`
+   `araizii-win-defender`
 3. Description:  
    `Collect Defender logs`
 4. For **Channel Name**, open **Event Viewer** again:
@@ -84,7 +84,7 @@ In the integration settings:
 
 *(If you wanted to exclude an ID, add a minus sign before it, e.g., `-1116`.)*
 
-Assign it to the same **Agent Policy** (`my-dfir-windows-policy`), then **Save and Deploy Changes**.
+Assign it to the same **Agent Policy** (`araizii-windows-policy`), then **Save and Deploy Changes**.
 
 ---
 
