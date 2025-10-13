@@ -1,0 +1,7 @@
+failed attempts
+user
+source ip
+
+system.auth.ssh.event: * and agent.name ubuntu-vm and system.auth.ssh.event: Invalid
+
+system.auth.ssh.event: * and agent.name ubuntu-vm and system.auth.ssh.event: Failed and user.name: root

@@ -1,0 +1,6 @@
+failed attempts
+user
+source ip
+
+event.code: 4625 and agent.name: windows-server-vm and user.name : ADMINISTRATOR --> Failed Authentication
+event.code: 4624 and winlog.event_data.LogonType: 10 or winlog.event_data.LogonType: 7   --> Passed Authentication
