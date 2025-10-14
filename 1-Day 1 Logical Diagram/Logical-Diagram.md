@@ -13,7 +13,6 @@ Accessing Draw.io
    * Explore basic tools: Shapes (General Tab), Grid, Background, Styles.
    * Creating the Network Diagram
 
-![Kibana Screenshot](../images/NetworkDiagram.jpg)
 ![Kibana Screenshot](../images/NetworkDiagram.png)
 
 # Cloud Provider: Vultr (Hosting all virtual machines).
