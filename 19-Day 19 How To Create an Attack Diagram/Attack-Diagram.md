@@ -34,7 +34,7 @@ The end-to-end planned attack contains 6 phases that map to typical adversary be
 
 ---
 
-![Attack Diagram](../images/AttackDiagram.png)
+![Attack Diagram](../images/19-AttackDiagram.png)
 
 ## Attack phases & detailed steps
 

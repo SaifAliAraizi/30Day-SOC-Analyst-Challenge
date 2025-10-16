@@ -27,7 +27,7 @@ This single-file markdown contains a complete, GitHub-ready guide for **Day 13**
 
 ---
 
-![Ubuntu Fleet-Server](../images/ubuntu-fleet-server.png)
+![Ubuntu Fleet-Server](../images/13-ubuntu-fleet-server.png)
 
 ## Prerequisites
 

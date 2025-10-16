@@ -117,7 +117,7 @@ This will launch Mythic and start all its required services.
 4. You’ll see the Mythic login screen.
 
 ---
-![Mythic](../images/mythic.png)
+![Mythic](../images/20-mythic.png)
 
 ## 🔑 Step 9: Retrieve Mythic Credentials
 
@@ -149,7 +149,7 @@ You can also switch to **dark mode** by clicking the sun icon.
 
 ---
 
-![Mythic](../images/mythic-dashboard.png)
+![Mythic](../images/20-mythic-dashboard.png)
 
 ## 🚀 Step 11: Customize Operations
 

@@ -105,7 +105,7 @@ Now, let’s create a **Threshold Rule** for brute-force activity:
 
 ---
 
-![Ubuntu Fleet-Server](../images/ssh-bruteforce-alerts.png)
+![Ubuntu Fleet-Server](../images/14-ssh-bruteforce-alerts.png)
 
 ## 🗺️ Step 5: Build SSH Attack Dashboard
 
@@ -146,8 +146,8 @@ You can now visually track SSH attack sources — e.g. multiple failed attempts 
 
 ---
 
-![Ubuntu Fleet-Server](../images/ssh-bruteforce-dashboard.png)
-![Ubuntu Fleet-Server](../images/ssh-bruteforce-dashboard1.png)
+![Ubuntu Fleet-Server](../images/14-ssh-bruteforce-dashboard.png)
+![Ubuntu Fleet-Server](../images/14-ssh-bruteforce-dashboard1.png)
 
 ## 🧮 Step 6: Add Successful Authentication Visualization
 
@@ -164,7 +164,7 @@ You can also monitor successful SSH authentications:
 Now you can compare failed vs successful login activity.
 
 ---
-![Ubuntu Fleet-Server](../images/ssh-bruteforce-dashboard-success.png)
+![Ubuntu Fleet-Server](../images/14-ssh-bruteforce-dashboard-success.png)
 ## 🎯 Step 7: Final Dashboard Overview
 
 ✅ **SSH Failed Authentications** — Visual map showing failed login attempts by country.
@@ -173,7 +173,7 @@ Now you can compare failed vs successful login activity.
 
 ---
 
-![Ubuntu Fleet-Server](../images/ssh-bruteforce-dashboard-success.png)
+![Ubuntu Fleet-Server](../images/14-ssh-bruteforce-dashboard-success.png)
 
 ## 🧩 Conclusion
 

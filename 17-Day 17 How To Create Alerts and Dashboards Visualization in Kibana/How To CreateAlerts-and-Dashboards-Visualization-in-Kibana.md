@@ -57,7 +57,7 @@ Our goal is to build an **RDP activity dashboard** similar to the SSH activity m
 
 ---
 
-![RDP Authentication Map](../images/RDP-burteforce-map.png)
+![RDP Authentication Map](../images/17-RDP-burteforce-map.png)
 
 ## 📋 Step 5: Add Data Tables to Dashboard
 We’ll add tables for quick visibility of **Usernames**, **Source IPs**, and **Countries**.
@@ -106,7 +106,7 @@ At a glance, you can now visualize:
 
 ---
 
-![RDP Authentication Table](../images/RDP-burteforce-table.png)
+![RDP Authentication Table](../images/17-RDP-burteforce-table.png)
 
 
 ## 💡 Notes

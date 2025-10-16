@@ -13,7 +13,7 @@ Accessing Draw.io
    * Explore basic tools: Shapes (General Tab), Grid, Background, Styles.
    * Creating the Network Diagram
 
-![Kibana Screenshot](../images/NetworkDiagram.png)
+![Kibana Screenshot](../images/1-NetworkDiagram.png)
 
 # Cloud Provider: Vultr (Hosting all virtual machines).
    * Servers & Computers in the Setup:
@@ -25,8 +25,6 @@ Accessing Draw.io
    * C2 (Command & Control) Server (Marked in Red)
    * SOC Analyst Laptop
    * Attacker Laptop (Marked in Red)
-
-![Image](https://github.com/user-attachments/assets/11aa095a-6d38-422f-a99c-03fc6e1b5ce5)
 
 
 ## Network configuration

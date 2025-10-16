@@ -121,7 +121,7 @@ Fleet Server connected.
 
 Head back to Kibana → **Fleet → Agents**, and you’ll see the connected Fleet Server.
 
-![Fleet-server](../images/fleet-server.png)
+![Fleet-server](../images/7-fleet-server.png)
 
 ---
 
@@ -177,7 +177,7 @@ Head back to Kibana → **Fleet → Agents**, and you’ll see the connected Fle
 
 This confirms that the agent is correctly forwarding logs to Elasticsearch.
 
-![Fleet-server-policy](../images/fleet-server-policy.png)
+![Fleet-server-policy](../images/7-fleet-server-policy.png)
 ---
 
 ## 🧠 Summary

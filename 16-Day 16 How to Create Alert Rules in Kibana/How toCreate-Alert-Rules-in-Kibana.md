@@ -17,7 +17,7 @@ In this lesson we review Windows authentication logs from our cloud lab (the Win
 
 ---
 
-![RDP Alert](../images/RDP-alerts.png)
+![RDP Alert](../images/16-RDP-alerts.png)
 
 ## Key Windows event IDs & fields
 
@@ -135,7 +135,7 @@ Quick containment if confirmed malicious:
 
 ---
 
-![Kibana Alert Rule](../images/Kibana-Alert-Rule.png)
+![Kibana Alert Rule](../images/16-Kibana-Alert-Rule.png)
 
 ## Conclusion
 

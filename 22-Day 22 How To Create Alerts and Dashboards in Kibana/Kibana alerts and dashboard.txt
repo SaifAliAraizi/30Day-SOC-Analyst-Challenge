@@ -1,0 +1,55 @@
+failed attempts
+user
+source ip
+
+Field-Names:
+svchost-araizii007.exe and event.code : "1"
+
+winlog.event_data.OriginalFileName
+
+winlog.event_data.Hashes
+
+svchost-araizii007.exe and event.code : 1  and winlog.event_data.OriginalFileName:"Apollo.exe" and winlog.event_data.Hashes: "SHA1=F1BA69366F37E34D75A8A8F2EE02E55FFEA0D005,MD5=6B3E9CD21CCBB531C806ECEC6D8CE2A0,SHA256=B9EA1A43D0EE80045FF94DE2EA41652554275A9079D7029F37A1BEC7393B21E8,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744"
+
+Final Field Command:
+event.code : 1  and (winlog.event_data.OriginalFileName:"Apollo.exe" or winlog.event_data.Hashes: "SHA1=F1BA69366F37E34D75A8A8F2EE02E55FFEA0D005,MD5=6B3E9CD21CCBB531C806ECEC6D8CE2A0,SHA256=B9EA1A43D0EE80045FF94DE2EA41652554275A9079D7029F37A1BEC7393B21E8,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744")
+
+Data:
+OriginalFileName: Apollo.exe
+SHA256: B9EA1A43D0EE80045FF94DE2EA41652554275A9079D7029F37A1BEC7393B21E8
+
+For Rules:
+host.hostname
+message
+winlog.event_data.CommandLine
+winlog.event_data.Image
+winlog.event_data.ParentCommandLine
+winlog.event_data.ParentImage
+winlog.event_data.ProcessGuid
+winlog.event_data.User
+winlog.event_data.CurrentDirectory
+
+
+For Dashboard:
+
+Event ID: 1 - Process Creates - powershell, cmd, rundll32:
+event.code : 1 and event.provider: Microsoft-Windows-Sysmon and (powershell or cmd or rundll32)
+
+winlog.event_data.CommandLine
+winlog.event_data.Image
+winlog.event_data.ParentCommandLine
+winlog.event_data.ParentImage
+winlog.event_data.User
+winlog.event_data.CurrentDirectory
+
+Event ID: 3 - Network Connection (External) any processes INITIATING a network connection outbound:
+event.code : 3 and event.provider: Microsoft-Windows-Sysmon and winlog.event_data.Initiated: true
+
+winlog.event_data.Image
+winlog.event_data.DestinationIp
+winlog.event_data.SourceIp
+winlog.event_data.DestinationPort
+
+
+Event ID: 5001:
+event.code : 5001 and event.provider: Microsoft-Windows-Windows Defender

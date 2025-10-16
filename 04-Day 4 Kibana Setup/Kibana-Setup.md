@@ -187,4 +187,4 @@ sudo systemctl restart kibana
 * Optional encryption keys secure saved objects, reporting, and sessions.
 
 ---
-![Kibana Screenshot](../images/kibana.png)
+![Kibana Screenshot](../images/4-kibana.png)

@@ -129,7 +129,7 @@ Event ID 3 — Network Connection Detected
 
 > 🔍 **Reference**: In the Sysmon documentation, Event ID 3 represents **network connection events**.
 
-![sysmon](../images/sysmon.png)
+![sysmon](../images/9-sysmon.png)
 
 ---
 

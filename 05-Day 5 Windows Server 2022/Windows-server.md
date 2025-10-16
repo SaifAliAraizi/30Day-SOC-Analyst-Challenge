@@ -6,7 +6,7 @@ Deploy and configure a **Windows Server 2022** instance on **Vultr Cloud** that 
 By the end of this setup, you’ll have a **Windows Server** with **RDP (Remote Desktop Protocol)** exposed to the internet — ready to generate real-world security logs.
 
 ---
-![Kibana Screenshot](../images/window-server.png)
+![Kibana Screenshot](../images/5-window-server.png)
 
 ## 🧩 **Steps Followed**
 
