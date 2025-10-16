@@ -149,15 +149,14 @@ Microsoft Defender Disabled
 
 ### 🧾 Step 5: Dashboard Overview
 
-![Kibana Dashboard](../images/22-kibana-alert-and-dashboard2.png)
-
 You now have a 3-panel dashboard:
 | Panel | Description |
 |--------|--------------|
 | **Process Created** | Detects suspicious PowerShell, CMD, or rundll32 executions |
 | **Network Connections** | Shows outbound connections initiated by processes |
 | **Defender Disabled** | Detects when Microsoft Defender is turned off |
-   ```
+
+![Kibana Dashboard](../images/22-kibana-alert-and-dashboard2.png)
 ---
 
 ### ✅ Summary

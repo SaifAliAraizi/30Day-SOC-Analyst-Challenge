@@ -1,4 +1,3 @@
-````markdown
 # Day 20 — Setting Up Mythic C2
 
 Welcome to **Day 20** of the *30-Day MyDFIR for SOC Analyst Challenge*! This day focuses on setting up your own **Mythic Command and Control (C2)** instance and understanding how Mythic works. By the end, you’ll have a working Mythic setup ready for controlled red team and blue team simulations.
@@ -43,9 +42,9 @@ Set up and explore Mythic C2 framework, learn its architecture, and prepare it f
 ## 🔐 Step 3: Connect to Mythic Server
 1. Go to Vultr → **Mythic Instance** → Click **View Console** to verify login prompt.
 2. Open PowerShell and SSH into your Mythic VM:
-   ```bash
+```bash
    ssh root@<MYTHIC_IP>
-````
+```
 
 3. Type `yes` when prompted and enter the root password from Vultr.
 
