@@ -33,37 +33,37 @@ A brute force attack is when an attacker systematically attempts many passwords 
 
 ## Common Brute Force Types
 
-* **Simple brute force:** Try every combination in sequence (e.g., `0000`, `0001`, ...). Usually automated.
-* **Dictionary attack:** Use a wordlist of common passwords / patterns (often derived from credential dumps).
-* **Credential stuffing:** Use username:password pairs from breaches and try them en masse across targets.
+- **Simple brute force:** Try every combination in sequence (e.g., `0000`, `0001`, ...). Usually automated.
+- **Dictionary attack:** Use a wordlist of common passwords / patterns (often derived from credential dumps).
+- **Credential stuffing:** Use username:password pairs from breaches and try them en masse across targets.
 
 ## How to Protect Yourself
 
 **1) Use long passwords / passphrases**
 
-* Aim for **15+ characters**. Prefer passphrases over short complex strings.
-* Use a password manager to avoid reuse.
+- Aim for **15+ characters**. Prefer passphrases over short complex strings.
+- Use a password manager to avoid reuse.
 
 **2) Enable Multi-Factor Authentication (MFA)**
 
-* Use authenticator apps or hardware tokens (preferred over SMS/email).
+- Use authenticator apps or hardware tokens (preferred over SMS/email).
 
 **3) Reduce attack surface & enforce controls**
 
-* Avoid exposing SSH/RDP to the Internet. Use VPNs, bastion hosts, or jump boxes.
-* Implement rate-limiting, IP allowlists, and geo-restrictions where possible.
-* Consider progressive delays or lockouts after failed attempts (weigh DoS risk).
+- Avoid exposing SSH/RDP to the Internet. Use VPNs, bastion hosts, or jump boxes.
+- Implement rate-limiting, IP allowlists, and geo-restrictions where possible.
+- Consider progressive delays or lockouts after failed attempts (weigh DoS risk).
 
 **4) Monitor & educate**
 
-* Subscribe to breach notification services and rotate passwords if leaked.
-* Be suspicious of unexpected login-related emails and phishing attempts.
+- Subscribe to breach notification services and rotate passwords if leaked.
+- Be suspicious of unexpected login-related emails and phishing attempts.
 
 ## Common Offensive Tools (for lab/defensive analysis only)
 
-* **Hydra** — network login cracker supporting many protocols.
-* **Hashcat** — GPU-accelerated password recovery (offline hashes).
-* **John the Ripper** — flexible password cracking framework.
+- **Hydra** — network login cracker supporting many protocols.
+- **Hashcat** — GPU-accelerated password recovery (offline hashes).
+- **John the Ripper** — flexible password cracking framework.
 
 > **Note:** Use these tools **only** on systems you own or have written permission to test.
 
@@ -73,9 +73,9 @@ Below are example detection ideas and pseudo-queries. Adapt to your SIEM/log sch
 
 ### Detection rules (examples)
 
-* **Brute-force burst:** alert when an IP has more than **N failed logins** within **M minutes**.
-* **Distinct usernames from one IP:** alert when a single IP attempts > X unique usernames in Y minutes.
-* **Successful login after failures:** correlate success events with preceding failure burst.
+- **Brute-force burst:** alert when an IP has more than **N failed logins** within **M minutes**.
+- **Distinct usernames from one IP:** alert when a single IP attempts > X unique usernames in Y minutes.
+- **Successful login after failures:** correlate success events with preceding failure burst.
 
 ### Example pseudo-SIEM queries
 
@@ -99,17 +99,17 @@ index=auth_logs (action=failure OR action=success)
 
 **RDP example (Windows Event ID snippets)**
 
-* Monitor Event IDs: `4625` (failed logon), `4624` (successful logon). Alert on `4624` following many `4625` from same IP.
+- Monitor Event IDs: `4625` (failed logon), `4624` (successful logon). Alert on `4624` following many `4625` from same IP.
 
 ## Quick Hardening Checklist
 
-* [ ] Enforce password length (prefer passphrases) and discourage reuse.
-* [ ] Enable MFA across all high-value accounts.
-* [ ] Block or restrict RDP/SSH on public IPs; use bastion/VPN.
-* [ ] Deploy rate-limiting / progressive delays for auth endpoints.
-* [ ] Add alerting for credential stuffing patterns (many usernames, repeated IPs).
-* [ ] Keep an inventory of internet-exposed services.
-* [ ] Use fail2ban, CrowdSec, or equivalent to throttle brute force sources.
+- [ ] Enforce password length (prefer passphrases) and discourage reuse.
+- [ ] Enable MFA across all high-value accounts.
+- [ ] Block or restrict RDP/SSH on public IPs; use bastion/VPN.
+- [ ] Deploy rate-limiting / progressive delays for auth endpoints.
+- [ ] Add alerting for credential stuffing patterns (many usernames, repeated IPs).
+- [ ] Keep an inventory of internet-exposed services.
+- [ ] Use fail2ban, CrowdSec, or equivalent to throttle brute force sources.
 
 ## Recommended Config Snippets
 
@@ -143,7 +143,7 @@ bantime = 3600
 
 1. Deploy two VMs: attacker (Kali) and target (Ubuntu with SSH).
 2. On target: enable SSH and configure logging (syslog -> SIEM or local file).
-3. On attacker: run a **controlled** Hydra test using a *small* wordlist:
+3. On attacker: run a **controlled** Hydra test using a _small_ wordlist:
 
 ```
 hydra -l testuser -P small-wordlist.txt ssh://TARGET_IP -t 4
@@ -154,7 +154,7 @@ hydra -l testuser -P small-wordlist.txt ssh://TARGET_IP -t 4
 
 ## Resources & Further Reading
 
-* OWASP Authentication Cheat Sheet
-* Have I Been Pwned — breach notification
-* Tool docs: Hydra, Hashcat, John the Ripper
-* Fail2Ban / CrowdSec documentation
+- OWASP Authentication Cheat Sheet
+- Have I Been Pwned — breach notification
+- Tool docs: Hydra, Hashcat, John the Ripper
+- Fail2Ban / CrowdSec documentation

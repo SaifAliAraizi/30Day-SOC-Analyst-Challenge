@@ -21,49 +21,51 @@ The **ELK Stack** consists of three open-source components developed by **Elasti
 
 ## 1. Elasticsearch
 
-* Acts as the **central log database**.
-* Stores logs such as:
+- Acts as the **central log database**.
+- Stores logs such as:
 
-  * Windows Event Logs
-  * Syslogs
-  * Firewall Logs
-  * Application Logs
-* Uses **EQL (Elasticsearch Query Language)** for querying data.
-* Supports **RESTful APIs** and **JSON**, allowing integration with other systems and automation tools.
-* Can be queried via the **Kibana web console** without needing API calls.
+  - Windows Event Logs
+  - Syslogs
+  - Firewall Logs
+  - Application Logs
+
+- Uses **EQL (Elasticsearch Query Language)** for querying data.
+- Supports **RESTful APIs** and **JSON**, allowing integration with other systems and automation tools.
+- Can be queried via the **Kibana web console** without needing API calls.
 
 ---
 
 ## 2. Logstash
 
-* Works as the **data pipeline** between endpoints and Elasticsearch.
-* **Collects**, **transforms**, and **forwards** telemetry (log data).
-* Supports multiple input sources such as Beats or Elastic Agent.
-* Example use case:
+- Works as the **data pipeline** between endpoints and Elasticsearch.
+- **Collects**, **transforms**, and **forwards** telemetry (log data).
+- Supports multiple input sources such as Beats or Elastic Agent.
+- Example use case:
 
-  * Collect Windows Event Logs using *Winlogbeat* or *Elastic Agent*.
-  * Filter specific events (e.g., Event ID 4624 – Successful Login).
-  * Forward the filtered logs into Elasticsearch for storage.
+  - Collect Windows Event Logs using _Winlogbeat_ or _Elastic Agent_.
+  - Filter specific events (e.g., Event ID 4624 – Successful Login).
+  - Forward the filtered logs into Elasticsearch for storage.
 
 ### Logstash Functions:
 
-* **Filtering** – Selects only logs matching defined criteria.
-* **Parsing** – Maps keywords or fields within a log to readable field names (e.g., source IP, destination port).
-* **Customization** – Allows creation of custom parsers for unstructured logs.
+- **Filtering** – Selects only logs matching defined criteria.
+- **Parsing** – Maps keywords or fields within a log to readable field names (e.g., source IP, destination port).
+- **Customization** – Allows creation of custom parsers for unstructured logs.
 
 ---
 
 ## 3. Kibana
 
-* The **visualization and analysis layer** for Elasticsearch data.
-* Provides:
+- The **visualization and analysis layer** for Elasticsearch data.
+- Provides:
 
-  * **Discover tab** – Query logs interactively.
-  * **Kibana Lens** – Drag-and-drop dashboard builder.
-  * **Machine Learning** – Detect anomalies automatically.
-  * **Maps** – Visualize geolocation-based data.
-  * **Alerting & Reporting** – Create automated alerts or generate reports.
-* Acts as the **SOC Analyst’s interface** for monitoring and investigation.
+  - **Discover tab** – Query logs interactively.
+  - **Kibana Lens** – Drag-and-drop dashboard builder.
+  - **Machine Learning** – Detect anomalies automatically.
+  - **Maps** – Visualize geolocation-based data.
+  - **Alerting & Reporting** – Create automated alerts or generate reports.
+
+- Acts as the **SOC Analyst’s interface** for monitoring and investigation.
 
 ---
 
@@ -71,15 +73,16 @@ The **ELK Stack** consists of three open-source components developed by **Elasti
 
 To send telemetry to Logstash or Elasticsearch, Elastic offers:
 
-* **Beats** – Lightweight data shippers for specific data types:
+- **Beats** – Lightweight data shippers for specific data types:
 
-  * *Filebeat* (logs)
-  * *Metricbeat* (system metrics)
-  * *Packetbeat* (network data)
-  * *Winlogbeat* (Windows event logs)
-  * *Auditbeat* (audit logs)
-  * *Heartbeat* (uptime monitoring)
-* **Elastic Agent** – A unified agent replacing multiple Beats, simplifying deployment and management.
+  - _Filebeat_ (logs)
+  - _Metricbeat_ (system metrics)
+  - _Packetbeat_ (network data)
+  - _Winlogbeat_ (Windows event logs)
+  - _Auditbeat_ (audit logs)
+  - _Heartbeat_ (uptime monitoring)
+
+- **Elastic Agent** – A unified agent replacing multiple Beats, simplifying deployment and management.
 
 In this 30-day challenge, the **Elastic Agent** will be used for all endpoints.
 
@@ -119,10 +122,10 @@ This makes transitioning between ELK and Splunk relatively easy for SOC analysts
 
 ## Key Takeaways
 
-* ELK provides the **core foundation for a SOC’s SIEM** solution.
-* Understanding data flow — from endpoints → Logstash → Elasticsearch → Kibana — is essential.
-* Elastic Agent simplifies endpoint data collection.
-* ELK’s flexibility, scalability, and visualization capabilities make it a leading open-source SOC toolset.
+- ELK provides the **core foundation for a SOC’s SIEM** solution.
+- Understanding data flow — from endpoints → Logstash → Elasticsearch → Kibana — is essential.
+- Elastic Agent simplifies endpoint data collection.
+- ELK’s flexibility, scalability, and visualization capabilities make it a leading open-source SOC toolset.
 
 ---
 

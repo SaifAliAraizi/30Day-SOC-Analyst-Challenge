@@ -8,8 +8,8 @@ By the end of this documentation, you’ll have centralized management for all y
 
 ## 🚀 Objective
 
-- Deploy and configure a **Fleet Server** on a new Ubuntu VM.  
-- Install and enroll the **Elastic Agent** on your Windows Server.  
+- Deploy and configure a **Fleet Server** on a new Ubuntu VM.
+- Install and enroll the **Elastic Agent** on your Windows Server.
 - Troubleshoot connectivity and enrollment issues between the Fleet Server and ELK.
 
 ---
@@ -21,11 +21,11 @@ By the end of this documentation, you’ll have centralized management for all y
 3. Select the following configuration:
 
    ```
-   Location: Toronto  
-   OS: Ubuntu 22.04  
-   CPU: 1 vCPU  
-   RAM: 4 GB  
-   VPC Network: Selected (Private Cloud 2.0)  
+   Location: Toronto
+   OS: Ubuntu 22.04
+   CPU: 1 vCPU
+   RAM: 4 GB
+   VPC Network: Selected (Private Cloud 2.0)
    Firewall Group: Default or custom
    ```
 
@@ -43,11 +43,12 @@ By the end of this documentation, you’ll have centralized management for all y
    ```
    http://<YOUR_ELK_PUBLIC_IP>:5601
    ```
-2. Click the **☰ (hamburger icon)** on the left menu → scroll down → select **Fleet** under *Management*.
+2. Click the **☰ (hamburger icon)** on the left menu → scroll down → select **Fleet** under _Management_.
 3. Click the **Add Fleet Server** button.
-4. Choose **Quick Start** (sufficient for the challenge; use *Advanced* for production).
+4. Choose **Quick Start** (sufficient for the challenge; use _Advanced_ for production).
 
    **Configuration Example:**
+
    ```
    Fleet Server name: mydfir-fleet-server
    URL: https://<FLEET_SERVER_PUBLIC_IP>:8220
@@ -72,6 +73,7 @@ By the end of this documentation, you’ll have centralized management for all y
    ```
 3. Paste and run the Fleet installation command copied from Kibana.  
    Example:
+
    ```bash
    sudo ./elastic-agent install --fleet-server-es=<ELASTICSEARCH_URL> --fleet-server-service-token=<TOKEN>
    ```
@@ -90,6 +92,7 @@ By the end of this documentation, you’ll have centralized management for all y
 
 - **Issue:** `Fleet Server timed out waiting for Fleet Server to start`  
   **Fix:** Allow Elasticsearch’s default port:
+
   ```bash
   sudo ufw allow 9200
   ```
@@ -100,6 +103,7 @@ By the end of this documentation, you’ll have centralized management for all y
   - Fleet Server ↔ Agents (Ports **8220**, **443**)
 
 Example:
+
 ```bash
 sudo ufw allow 8220
 sudo ufw allow 443
@@ -136,19 +140,24 @@ Head back to Kibana → **Fleet → Agents**, and you’ll see the connected Fle
 3. Copy the generated **Windows installation command**.
 
 4. On your **Windows Server**:
+
    - Open **PowerShell as Administrator**.
    - Paste and run the installation command.
 
    Example:
+
    ```powershell
    .\elastic-agent.exe install --url=https://<FLEET_SERVER_IP>:8220 --enrollment-token=<TOKEN>
    ```
 
 5. If you see a certificate error:
+
    ```
    x509: certificate signed by unknown authority
    ```
+
    Add the `--insecure` flag to bypass the self-signed certificate check:
+
    ```powershell
    .\elastic-agent.exe install --url=https://<FLEET_SERVER_IP>:8220 --enrollment-token=<TOKEN> --insecure
    ```
@@ -177,15 +186,14 @@ Head back to Kibana → **Fleet → Agents**, and you’ll see the connected Fle
 
 This confirms that the agent is correctly forwarding logs to Elasticsearch.
 
-![Fleet-server-policy](../images/7-fleet-server-policy.png)
----
+## ![Fleet-server-policy](../images/7-fleet-server-policy.png)
 
 ## 🧠 Summary
 
-- Deployed and configured a Fleet Server on Ubuntu.  
-- Installed and enrolled Elastic Agent on Windows Server.  
-- Opened necessary firewall ports (8220, 9200, 443).  
-- Troubleshot common connection and certificate errors.  
+- Deployed and configured a Fleet Server on Ubuntu.
+- Installed and enrolled Elastic Agent on Windows Server.
+- Opened necessary firewall ports (8220, 9200, 443).
+- Troubleshot common connection and certificate errors.
 - Verified log ingestion in Kibana.
 
 ---

@@ -31,10 +31,10 @@ This single-file markdown contains a complete, GitHub-ready guide for **Day 13**
 
 ## Prerequisites
 
-* Kibana + Elasticsearch accessible (Fleet enabled).
-* Admin privileges in Kibana to create agent policies and enroll agents.
-* A Linux SSH server (from Day 12) with root or sudo access.
-* If using self-signed certificates on your Fleet server, be prepared to use `--insecure` during enrollment.
+- Kibana + Elasticsearch accessible (Fleet enabled).
+- Admin privileges in Kibana to create agent policies and enroll agents.
+- A Linux SSH server (from Day 12) with root or sudo access.
+- If using self-signed certificates on your Fleet server, be prepared to use `--insecure` during enrollment.
 
 ---
 
@@ -54,8 +54,8 @@ This policy will be used to control which integrations and data streams the agen
 2. Select **System** (or `system-3` if present) to collect system logs and auth logs.
 3. Check the integration settings to confirm it is configured to capture authentication logs. Typical paths:
 
-   * Ubuntu/Debian: `/var/log/auth.log`
-   * Red Hat/CentOS: `/var/log/secure`
+   - Ubuntu/Debian: `/var/log/auth.log`
+   - Red Hat/CentOS: `/var/log/secure`
 
 > The system integration usually has options per OS so it covers `/var/log/auth.log` for Debian/Ubuntu and `/var/log/secure` for RHEL/CentOS.
 
@@ -80,8 +80,8 @@ sudo /bin/bash -c "\
 "
 ```
 
-* Replace `<KIBANA_HOST>` and `<ENROLLMENT_TOKEN>` with values provided in Fleet.
-* If your Fleet server uses a self-signed certificate, include `--insecure` (see troubleshooting below).
+- Replace `<KIBANA_HOST>` and `<ENROLLMENT_TOKEN>` with values provided in Fleet.
+- If your Fleet server uses a self-signed certificate, include `--insecure` (see troubleshooting below).
 
 ---
 
@@ -118,13 +118,14 @@ You can increase the `rows per page` (e.g., to 500) in the Discover UI to show m
 
 ## Explore logs in Discover — quick tips
 
-* Add the `message` field (click its field name → click the column toggle icon) to include the full log message in the table view.
-* Use the discover filter bar to add filters like: `agent.name : "Araizii-linux-*"` or `source.ip : "203.0.113.45"`.
-* Try queries to locate authentication issues:
+- Add the `message` field (click its field name → click the column toggle icon) to include the full log message in the table view.
+- Use the discover filter bar to add filters like: `agent.name : "Araizii-linux-*"` or `source.ip : "203.0.113.45"`.
+- Try queries to locate authentication issues:
 
-  * `event.dataset: "system.auth"` or similar system dataset names (depends on integration).
-  * `message: "authentication failure" OR message: "Failed password"`
-* Use `Inspect` → `View: Raw` on an event to see the original parsed fields.
+  - `event.dataset: "system.auth"` or similar system dataset names (depends on integration).
+  - `message: "authentication failure" OR message: "Failed password"`
+
+- Use `Inspect` → `View: Raw` on an event to see the original parsed fields.
 
 ---
 
@@ -155,8 +156,8 @@ If you identified a suspicious IP on the host via `grep`/`awk` against `/var/log
 
 ## Conclusion & next steps
 
-* You have installed and enrolled the Elastic Agent on your SSH host and confirmed logs are flowing into Elasticsearch.
-* Next video: create alert rules for brute-force detection and build a dashboard that visualizes top attacker IPs, geolocation, and failed vs successful auth trends.
+- You have installed and enrolled the Elastic Agent on your SSH host and confirmed logs are flowing into Elasticsearch.
+- Next video: create alert rules for brute-force detection and build a dashboard that visualizes top attacker IPs, geolocation, and failed vs successful auth trends.
 
 ---
 
@@ -165,4 +166,3 @@ If you identified a suspicious IP on the host via `grep`/`awk` against `/var/log
 Only install agents and collect logs from systems you own or are authorized to manage. When testing with self-signed certificates, use `--insecure` only in lab environments — never in production.
 
 ---
-

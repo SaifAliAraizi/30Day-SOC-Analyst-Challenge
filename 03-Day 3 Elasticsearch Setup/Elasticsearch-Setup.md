@@ -10,27 +10,29 @@ Deploy and configure **Elasticsearch** on a cloud-hosted Ubuntu VM (Vultr or Goo
 
 #### **1. Create Virtual Private Cloud (VPC)**
 
-* Log in to **Vultr (vultr.com)** or GCP and navigate to **Network → VPC 2.0**.
-* Create a new VPC network with:
+- Log in to **Vultr (vultr.com)** or GCP and navigate to **Network → VPC 2.0**.
+- Create a new VPC network with:
 
-  * **Region:** Toronto (or same region as your VM)
-  * **IP Range:** `172.31.0.0/24`
-  * **Name:** `mydef-soc-challenge`
-* ✅ *Ensure all VMs (Elasticsearch, Kibana, SOC Analyst, etc.) are in the same region.*
+  - **Region:** Toronto (or same region as your VM)
+  - **IP Range:** `172.31.0.0/24`
+  - **Name:** `mydef-soc-challenge`
+
+- ✅ _Ensure all VMs (Elasticsearch, Kibana, SOC Analyst, etc.) are in the same region._
 
 ---
 
 #### **2. Deploy the Virtual Machine**
 
-* Go to **Products → Deploy New Server**
-* Select:
+- Go to **Products → Deploy New Server**
+- Select:
 
-  * **Location:** Same as VPC (e.g., Toronto)
-  * **OS Image:** Ubuntu 22.04 LTS
-  * **CPU & RAM:** 4 vCPU / 16 GB RAM
-  * **VPC:** Select your created VPC
-  * **Hostname:** `elk-vm`
-* Deploy the server and wait until the status shows **Running**.
+  - **Location:** Same as VPC (e.g., Toronto)
+  - **OS Image:** Ubuntu 22.04 LTS
+  - **CPU & RAM:** 4 vCPU / 16 GB RAM
+  - **VPC:** Select your created VPC
+  - **Hostname:** `elk-vm`
+
+- Deploy the server and wait until the status shows **Running**.
 
 ---
 
@@ -125,7 +127,7 @@ nano elasticsearch.yml
 Modify:
 
 ```yaml
-network.host: <your_private_ip>  # e.g., 10.128.0.6 or 172.31.0.3
+network.host: <your_private_ip> # e.g., 10.128.0.6 or 172.31.0.3
 http.port: 9200
 ```
 
@@ -141,12 +143,13 @@ sudo systemctl restart elasticsearch.service
 
 In Vultr or GCP:
 
-* Go to your **VM Firewall Settings**
-* Allow only:
+- Go to your **VM Firewall Settings**
+- Allow only:
 
-  * SSH (22/tcp) — from your IP
-  * HTTP (9200/tcp) — internal use
-* Apply the rule to your `elk-vm`
+  - SSH (22/tcp) — from your IP
+  - HTTP (9200/tcp) — internal use
+
+- Apply the rule to your `elk-vm`
 
 ---
 
@@ -164,10 +167,10 @@ You should see a JSON response confirming Elasticsearch is active.
 
 ### 🧾 **Key Takeaways**
 
-* Successfully deployed **Elasticsearch** using `.deb` package.
-* Configured **systemd** for automatic service management.
-* Applied firewall rules for restricted access.
-* Prepared system for **Kibana integration (Day 4)**.
+- Successfully deployed **Elasticsearch** using `.deb` package.
+- Configured **systemd** for automatic service management.
+- Applied firewall rules for restricted access.
+- Prepared system for **Kibana integration (Day 4)**.
 
 ---
 

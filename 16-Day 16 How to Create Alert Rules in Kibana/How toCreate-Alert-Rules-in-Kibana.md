@@ -10,10 +10,10 @@ In this lesson we review Windows authentication logs from our cloud lab (the Win
 
 **Goals:**
 
-* Identify the correct Windows Event IDs and fields for failed and successful authentication.
-* Build and save a Discover query for failed RDP/network authentication (event.code `4625`).
-* Create a Search Threshold alert and a Security Detection (Threshold) rule that groups by user and source IP and provides richer alert context.
-* Test by generating failed logons and inspect alert details.
+- Identify the correct Windows Event IDs and fields for failed and successful authentication.
+- Build and save a Discover query for failed RDP/network authentication (event.code `4625`).
+- Create a Search Threshold alert and a Security Detection (Threshold) rule that groups by user and source IP and provides richer alert context.
+- Test by generating failed logons and inspect alert details.
 
 ---
 
@@ -21,20 +21,20 @@ In this lesson we review Windows authentication logs from our cloud lab (the Win
 
 ## Key Windows event IDs & fields
 
-* **4625** — An account failed to log on (use this for failed authentication detection).
-* **4624** — An account was successfully logged on (use this to detect successful RDP logons).
+- **4625** — An account failed to log on (use this for failed authentication detection).
+- **4624** — An account was successfully logged on (use this to detect successful RDP logons).
 
 Important fields commonly used in detection & triage:
 
-* `event.code` (e.g., `4625`, `4624`)
-* `user.name` (the account that attempted the login)
-* `source.ip` / `Source Network Address` (originating IP)
-* `message` (human readable description; contains logon type)
-* Logon types to be aware of:
+- `event.code` (e.g., `4625`, `4624`)
+- `user.name` (the account that attempted the login)
+- `source.ip` / `Source Network Address` (originating IP)
+- `message` (human readable description; contains logon type)
+- Logon types to be aware of:
 
-  * **Type 3** — Network logon (often used for network authentication attempts — can be SMB, RDP network auth, etc.)
-  * **Type 10** — RemoteInteractive (true RDP interactive session)
-  * **Type 7** — Unlock (sometimes seen in remote sessions)
+  - **Type 3** — Network logon (often used for network authentication attempts — can be SMB, RDP network auth, etc.)
+  - **Type 10** — RemoteInteractive (true RDP interactive session)
+  - **Type 7** — Unlock (sometimes seen in remote sessions)
 
 ---
 
@@ -84,27 +84,27 @@ To get more actionable alerts (including which username and source IP triggered 
 
 **Why this is better:**
 
-* The alert reason will include the username and source IP.
-* The rule table view shows threshold fields and values so analysts can quickly see the offending pair.
-* You can add an investigation and response guide to the rule to speed up analyst response.
+- The alert reason will include the username and source IP.
+- The rule table view shows threshold fields and values so analysts can quickly see the offending pair.
+- You can add an investigation and response guide to the rule to speed up analyst response.
 
 ---
 
 ## Testing the rules
 
-* Generate failed logons from a known host (e.g., attempt an RDP login with a wrong password) and watch Discover.
-* The Search Threshold alert should fire when the configured count is reached.
-* The Security Detection rule will produce richer alerts — click **View alert details** → **Table** to see `source.ip`, `user.name`, and threshold counts.
-* If you have an EDR and Enterprise features, `Visualizations` and `Insights` will show additional host/context (note: some features may require a license).
+- Generate failed logons from a known host (e.g., attempt an RDP login with a wrong password) and watch Discover.
+- The Search Threshold alert should fire when the configured count is reached.
+- The Security Detection rule will produce richer alerts — click **View alert details** → **Table** to see `source.ip`, `user.name`, and threshold counts.
+- If you have an EDR and Enterprise features, `Visualizations` and `Insights` will show additional host/context (note: some features may require a license).
 
 ---
 
 ## Example queries (copy/paste)
 
-* Basic failed auth: `event.code:4625`
-* Failures for a specific host: `agent.name:"araizii-win-steppenrocks" AND event.code:4625`
-* Failures for specific user: `event.code:4625 AND user.name:administrator`
-* Successful RDP interactive logon: `event.code:4624 AND logon.type:10`
+- Basic failed auth: `event.code:4625`
+- Failures for a specific host: `agent.name:"araizii-win-steppenrocks" AND event.code:4625`
+- Failures for specific user: `event.code:4625 AND user.name:administrator`
+- Successful RDP interactive logon: `event.code:4624 AND logon.type:10`
 
 ---
 
@@ -120,18 +120,18 @@ When an alert fires, investigate the following:
 
 Quick containment if confirmed malicious:
 
-* Block `source.ip` at the perimeter/firewall.
-* Disable the affected account and force password rotation.
-* Isolate the host for deeper forensic collection if signs of compromise exist.
+- Block `source.ip` at the perimeter/firewall.
+- Disable the affected account and force password rotation.
+- Isolate the host for deeper forensic collection if signs of compromise exist.
 
 ---
 
 ## Tuning ideas & next steps
 
-* Tune thresholds per account class (service accounts vs user accounts) and per environment noise level.
-* Combine threshold detection with **indicator‑match** (blocklisted IPs) or **event correlation** (failed logons followed by privilege escalation events) to reduce false positives.
-* Consider building an **ESQL** rule or using `new terms` to detect new source IPs/auth attempts at scale.
-* Add an automation playbook for common responses (block IP, create ticket, gather logs) if you have SOAR/response integrations.
+- Tune thresholds per account class (service accounts vs user accounts) and per environment noise level.
+- Combine threshold detection with **indicator‑match** (blocklisted IPs) or **event correlation** (failed logons followed by privilege escalation events) to reduce false positives.
+- Consider building an **ESQL** rule or using `new terms` to detect new source IPs/auth attempts at scale.
+- Add an automation playbook for common responses (block IP, create ticket, gather logs) if you have SOAR/response integrations.
 
 ---
 
@@ -158,4 +158,3 @@ On **Day 17** we will create a dashboard to visualize where authentication attem
 ```
 
 ---
-

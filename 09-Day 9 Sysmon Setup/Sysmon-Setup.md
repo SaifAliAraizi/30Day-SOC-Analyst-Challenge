@@ -4,8 +4,9 @@ Welcome to **Day 9** of the **30-Day MyDFIR for SOC Analyst Challenge**!
 This challenge is designed to help aspiring SOC Analysts gain **hands-on practical experience** in just 30 days.
 
 By the end of this lesson, you will:
-- Install **Sysmon** on your Windows Server (created in Day 5).  
-- Configure Sysmon using **Olaf’s Sysmon configuration file**.  
+
+- Install **Sysmon** on your Windows Server (created in Day 5).
+- Configure Sysmon using **Olaf’s Sysmon configuration file**.
 - Confirm that your server is successfully generating **Sysmon event logs**.
 
 ---
@@ -20,10 +21,10 @@ Sysmon is part of **Microsoft Sysinternals Suite**, and its data is invaluable f
 
 ## 🧩 Step 1: Download Sysmon
 
-1. Open your browser and **Google “Sysmon”**.  
+1. Open your browser and **Google “Sysmon”**.
 2. Click the first result:  
-   👉 [Microsoft Learn - Sysmon (Sysinternals)](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)  
-3. At the time of recording, the version is **15.15**, though you may find a newer version when you follow along.  
+   👉 [Microsoft Learn - Sysmon (Sysinternals)](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
+3. At the time of recording, the version is **15.15**, though you may find a newer version when you follow along.
 4. Click **Download Sysmon**.
 
 > 💡 Note: On the same page, scroll down to explore the **different Event IDs** Sysmon generates — these are crucial for log analysis.
@@ -32,23 +33,25 @@ Sysmon is part of **Microsoft Sysinternals Suite**, and its data is invaluable f
 
 ## 🧩 Step 2: Connect to Your Windows Server
 
-1. Log into your **Windows Server** created on Day 5 using **RDP** (Remote Desktop).  
-2. Use your server’s **public IP address**, username (`Administrator`), and password from your provider (e.g., Vultr).  
+1. Log into your **Windows Server** created on Day 5 using **RDP** (Remote Desktop).
+2. Use your server’s **public IP address**, username (`Administrator`), and password from your provider (e.g., Vultr).
 
 Example:
+
 ```
 IP Address: 149.248.59.41
 Username: Administrator
 Password: (your server password)
 ```
+
 > 💡 You can use the console directly, but RDP provides a more convenient interface.
 
 ---
 
 ## 🧩 Step 3: Extract Sysmon Files
 
-1. Once downloaded, go to your **Downloads folder**.  
-2. Right-click on the Sysmon ZIP file → **Extract All**.  
+1. Once downloaded, go to your **Downloads folder**.
+2. Right-click on the Sysmon ZIP file → **Extract All**.
 3. Inside, you’ll find **three binaries**:
    - `Sysmon.exe`
    - `Sysmon64.exe`
@@ -64,10 +67,10 @@ To get meaningful logs, Sysmon needs a **configuration file** that defines what 
 
 We’ll use **Olaf Hartong’s Sysmon configuration**, a widely trusted config in the cybersecurity community.
 
-1. Google **“Sysmon Olaf configuration GitHub”**.  
-2. Click the GitHub repository link (by Olaf Hartong).  
-3. Scroll down and find **sysmonconfig.xml**.  
-4. Click **Raw**, then **Right-click → Save As**.  
+1. Google **“Sysmon Olaf configuration GitHub”**.
+2. Click the GitHub repository link (by Olaf Hartong).
+3. Scroll down and find **sysmonconfig.xml**.
+4. Click **Raw**, then **Right-click → Save As**.
 5. Save the file into your **Sysmon directory** and keep the name `sysmonconfig.xml`.
 
 ---
@@ -80,13 +83,17 @@ Now that we have both Sysmon and the configuration file, let’s install it.
    - Search “PowerShell”
    - Right-click → “Run as Administrator”
 2. Navigate to the Sysmon directory:
+
 ```powershell
 cd "C:\Users\Administrator\Downloads\Sysmon"
 ```
+
 3. Verify the contents:
+
 ```powershell
 dir
 ```
+
 You should see `sysmon64.exe` and `sysmonconfig.xml`.
 
 4. Before installing, let’s confirm Sysmon isn’t already running:
@@ -100,9 +107,11 @@ You should see `sysmon64.exe` and `sysmonconfig.xml`.
 ## 🧩 Step 6: Run the Sysmon Installation Command
 
 In your PowerShell window, execute:
+
 ```powershell
 .\Sysmon64.exe -i sysmonconfig.xml
 ```
+
 Then, accept the **license agreement**.
 
 This installs Sysmon as a **Windows service** and begins monitoring based on your configuration file.
@@ -112,6 +121,7 @@ This installs Sysmon as a **Windows service** and begins monitoring based on you
 ## 🧩 Step 7: Verify Sysmon Installation
 
 After installation:
+
 1. Open **Services** again and click **Refresh**.  
    You should now see:
    ```
@@ -123,6 +133,7 @@ After installation:
    - Click **Operational**
 
 You should start seeing event logs such as:
+
 ```
 Event ID 3 — Network Connection Detected
 ```
@@ -152,13 +163,13 @@ These events are extremely useful for detecting malware, lateral movement, and s
 ## 🧰 Troubleshooting Tips
 
 - **Sysmon not appearing in Event Viewer:**  
-  Restart Event Viewer or your machine. Sometimes logs need a moment to register.  
+  Restart Event Viewer or your machine. Sometimes logs need a moment to register.
 
 - **Configuration errors:**  
   Ensure the XML file name matches exactly (`sysmonconfig.xml`) and is in the same directory as `Sysmon64.exe`.
 
 - **Reconfigure Sysmon:**  
-  If you modify your config file, run:  
+  If you modify your config file, run:
   ```powershell
   .\Sysmon64.exe -c sysmonconfig.xml
   ```

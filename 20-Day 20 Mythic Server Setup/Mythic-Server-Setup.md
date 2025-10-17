@@ -1,15 +1,17 @@
 # Day 20 — Setting Up Mythic C2
 
-Welcome to **Day 20** of the *30-Day MyDFIR for SOC Analyst Challenge*! This day focuses on setting up your own **Mythic Command and Control (C2)** instance and understanding how Mythic works. By the end, you’ll have a working Mythic setup ready for controlled red team and blue team simulations.
+Welcome to **Day 20** of the _30-Day MyDFIR for SOC Analyst Challenge_! This day focuses on setting up your own **Mythic Command and Control (C2)** instance and understanding how Mythic works. By the end, you’ll have a working Mythic setup ready for controlled red team and blue team simulations.
 
 ---
 
 ## 🧠 Objective
+
 Set up and explore Mythic C2 framework, learn its architecture, and prepare it for integration with your attacker (Kali Linux) and target (Windows Server) environments.
 
 ---
 
 ## 🧰 Prerequisites
+
 - A **Vultr Cloud** or similar cloud provider account.
 - Basic understanding of Linux commands.
 - Access to **Kali Linux** (as the attacker machine) — can be run in VMware or VirtualBox.
@@ -17,6 +19,7 @@ Set up and explore Mythic C2 framework, learn its architecture, and prepare it f
 ---
 
 ## ⚙️ Step 1: Deploy Mythic C2 Server
+
 1. Log into your cloud provider (Vultr).
 2. Click on **Deploy** → **Deploy New Server**.
 3. Choose **Cloud Compute (Shared CPU)** and select **Toronto** as the region.
@@ -28,6 +31,7 @@ Set up and explore Mythic C2 framework, learn its architecture, and prepare it f
 ---
 
 ## 💻 Step 2: Setting Up Kali Linux VM
+
 1. Go to [kali.org](https://www.kali.org) → **Download**.
 2. Choose **Virtual Machine Image**.
 3. Select your preferred hypervisor (VMware, VirtualBox, etc.).
@@ -40,8 +44,10 @@ Set up and explore Mythic C2 framework, learn its architecture, and prepare it f
 ---
 
 ## 🔐 Step 3: Connect to Mythic Server
+
 1. Go to Vultr → **Mythic Instance** → Click **View Console** to verify login prompt.
 2. Open PowerShell and SSH into your Mythic VM:
+
 ```bash
    ssh root@<MYTHIC_IP>
 ```
@@ -102,8 +108,9 @@ This will launch Mythic and start all its required services.
 2. Name it: `mydfir-mythic-firewall`.
 3. Add rules:
 
-   * **Protocol:** TCP, **Ports:** 1–65535, **Source:** Your public IP.
-   * Repeat for each machine that needs to connect (e.g., Windows target, Kali attacker).
+   - **Protocol:** TCP, **Ports:** 1–65535, **Source:** Your public IP.
+   - Repeat for each machine that needs to connect (e.g., Windows target, Kali attacker).
+
 4. Apply the firewall group to your Mythic instance.
 
 ---
@@ -112,10 +119,11 @@ This will launch Mythic and start all its required services.
 
 1. Copy your server’s public IP.
 2. Visit it in your browser: `https://<MYTHIC_IP>:7443`
-3. If you see the error *“plain HTTP request sent to HTTPS port”*, prepend **https://** manually.
+3. If you see the error _“plain HTTP request sent to HTTPS port”_, prepend **https://** manually.
 4. You’ll see the Mythic login screen.
 
 ---
+
 ![Mythic](../images/20-mythic.png)
 
 ## 🔑 Step 9: Retrieve Mythic Credentials
@@ -135,14 +143,14 @@ The username is usually `mythic_admin`. The password is in the `.env` file (uniq
 
 Once logged in, Mythic provides a modern dashboard with:
 
-* **Payloads** (C2 profiles, configurations)
-* **Callbacks** (agent communications)
-* **Tasks** (commands executed on infected hosts)
-* **Files** (uploads/downloads)
-* **Artifacts** (fingerprints, screenshots, keylogs)
-* **MITRE ATT&CK Mapping** (techniques used)
-* **Reports** (auto-generated reports and mappings)
-* **Tags** (label and categorize operations)
+- **Payloads** (C2 profiles, configurations)
+- **Callbacks** (agent communications)
+- **Tasks** (commands executed on infected hosts)
+- **Files** (uploads/downloads)
+- **Artifacts** (fingerprints, screenshots, keylogs)
+- **MITRE ATT&CK Mapping** (techniques used)
+- **Reports** (auto-generated reports and mappings)
+- **Tags** (label and categorize operations)
 
 You can also switch to **dark mode** by clicking the sun icon.
 
@@ -152,8 +160,8 @@ You can also switch to **dark mode** by clicking the sun icon.
 
 ## 🚀 Step 11: Customize Operations
 
-* Rename your default operation (`Operation Cima`) to something unique, e.g., `Operation MyDFIR`.
-* Configure your payload profiles and create agents for your upcoming tests.
+- Rename your default operation (`Operation Cima`) to something unique, e.g., `Operation MyDFIR`.
+- Configure your payload profiles and create agents for your upcoming tests.
 
 ---
 
@@ -162,5 +170,7 @@ You can also switch to **dark mode** by clicking the sun icon.
 Today, you successfully deployed and configured your own **Mythic C2 server** — a powerful post-exploitation and red teaming framework. You also tightened its security with firewall rules and learned how to navigate its interface.
 
 > ⚠️ Always use Mythic C2 responsibly — only in environments you own or have explicit permission to test.
+
+```
 
 ```

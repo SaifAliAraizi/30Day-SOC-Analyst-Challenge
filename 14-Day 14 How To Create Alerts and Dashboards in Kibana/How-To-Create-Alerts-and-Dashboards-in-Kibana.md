@@ -9,10 +9,10 @@ In this session, we’ll build an **SSH Brute Force Alert** and an **interactive
 
 By the end of this lab, you will:
 
-* Understand what an SSH brute-force attack looks like in logs.
-* Query and filter SSH authentication events in **Kibana Discover**.
-* Create an **alert rule** for SSH brute-force activity.
-* Build an **SSH Attack Map Dashboard** to visualize attack origins.
+- Understand what an SSH brute-force attack looks like in logs.
+- Query and filter SSH authentication events in **Kibana Discover**.
+- Create an **alert rule** for SSH brute-force activity.
+- Build an **SSH Attack Map Dashboard** to visualize attack origins.
 
 ---
 
@@ -23,14 +23,14 @@ Before we build an alert, we need to analyze SSH authentication logs already ing
 1. Open **Kibana → Discover**.
 2. Select your SSH data source (e.g., `ariazii-linux-distro`).
 3. Verify that logs from `/var/log/auth.log` are being ingested.
-4. Set the **time range** to *Today* to review recent activity.
+4. Set the **time range** to _Today_ to review recent activity.
 
 Look for authentication attempts in your logs — specifically the following key fields:
 
-* **system.auth.ssh.event** — Indicates SSH events such as `failed`, `invalid`, or `accepted`.
-* **user.name** — Shows the attempted username.
-* **source.ip** — IP address from which the attempt originated.
-* **source.geo.country_name** — Country name for geographic visualization.
+- **system.auth.ssh.event** — Indicates SSH events such as `failed`, `invalid`, or `accepted`.
+- **user.name** — Shows the attempted username.
+- **source.ip** — IP address from which the attempt originated.
+- **source.geo.country_name** — Country name for geographic visualization.
 
 ---
 
@@ -44,16 +44,18 @@ Let’s extract these key indicators:
    ```kql
    system.auth.ssh.event : *
    ```
+
 2. Filter the data for failed attempts only:
 
    ```kql
    system.auth.ssh.event : "failed"
    ```
+
 3. Add columns for visualization:
 
-   * `user.name`
-   * `source.ip`
-   * `source.geo.country_name`
+   - `user.name`
+   - `source.ip`
+   - `source.geo.country_name`
 
 Now you can see which users are being targeted and where the attacks are coming from. 🌍
 
@@ -71,6 +73,7 @@ Once your query is ready:
    ```text
    SSH Failed Activity
    ```
+
 3. This saved search will later be reused in our alert and dashboard.
 
 ---
@@ -85,17 +88,20 @@ Now, let’s create a **Threshold Rule** for brute-force activity:
    ```text
    mydf-ssh-bruteforce-activity-syedsaifali
    ```
+
 3. Use your saved query — it will auto-populate in the rule.
 4. Configure the threshold condition:
 
-   * **WHEN**: count of documents is **above 5**
-   * **FOR THE LAST**: 5 minutes
-   * **AGAINST**: system.auth.ssh.event : "failed"
+   - **WHEN**: count of documents is **above 5**
+   - **FOR THE LAST**: 5 minutes
+   - **AGAINST**: system.auth.ssh.event : "failed"
+
 5. Test the query:
 
    ```
    Matched 749 documents in the last 5 days
    ```
+
 6. Set the **check interval** to `1 minute`.
 7. Save the rule.
 
@@ -113,8 +119,8 @@ Now let’s visualize where these SSH brute-force attempts are coming from.
 
 ### 1. Open Kibana Maps
 
-* Go to **Analytics → Maps**.
-* Create a new map and paste your saved query:
+- Go to **Analytics → Maps**.
+- Create a new map and paste your saved query:
 
   ```kql
   agent.name : "mydf-linux-distro" and system.auth.ssh.event : "failed"
@@ -122,17 +128,17 @@ Now let’s visualize where these SSH brute-force attempts are coming from.
 
 ### 2. Add a Layer
 
-* Click **Add Layer → Choropleth Layer**.
-* Select **EMS Boundaries → World Countries**.
-* Join field: `iso_3166_1_alpha2` (country ISO code).
-* Metric Source: your active data view.
-* Field: `source.geo.country_iso_code`
+- Click **Add Layer → Choropleth Layer**.
+- Select **EMS Boundaries → World Countries**.
+- Join field: `iso_3166_1_alpha2` (country ISO code).
+- Metric Source: your active data view.
+- Field: `source.geo.country_iso_code`
 
 ### 3. Customize Map
 
-* Name the layer: `SSH Failed Authentications`.
-* Adjust visualization (opacity, color, etc.) as desired.
-* Click **Save → Add to New Dashboard**.
+- Name the layer: `SSH Failed Authentications`.
+- Adjust visualization (opacity, color, etc.) as desired.
+- Click **Save → Add to New Dashboard**.
 
 ### 4. Save Dashboard
 
@@ -159,12 +165,15 @@ You can also monitor successful SSH authentications:
    ```kql
    system.auth.ssh.event : "accepted"
    ```
+
 3. Save as `SSH Successful Authentication`.
 
 Now you can compare failed vs successful login activity.
 
 ---
+
 ![Ubuntu Fleet-Server](../images/14-ssh-bruteforce-dashboard-success.png)
+
 ## 🎯 Step 7: Final Dashboard Overview
 
 ✅ **SSH Failed Authentications** — Visual map showing failed login attempts by country.
@@ -179,8 +188,8 @@ Now you can compare failed vs successful login activity.
 
 Congratulations! 🎉 You’ve successfully:
 
-* Created an **SSH Brute Force Detection Alert** in Kibana.
-* Built a **visual dashboard** to pinpoint attacker geolocations.
+- Created an **SSH Brute Force Detection Alert** in Kibana.
+- Built a **visual dashboard** to pinpoint attacker geolocations.
 
 You now have both **real-time detection** and **geographic context** for SSH brute-force attacks — essential capabilities for any SOC Analyst.
 
@@ -188,9 +197,8 @@ You now have both **real-time detection** and **geographic context** for SSH bru
 
 ## 🧰 Tools Used
 
-* **Elastic Stack (Kibana, Elasticsearch, Fleet, Agent)**
-* **Ubuntu SSH Server Logs (`/var/log/auth.log`)**
-* **GeoIP Enrichment** for source location
+- **Elastic Stack (Kibana, Elasticsearch, Fleet, Agent)**
+- **Ubuntu SSH Server Logs (`/var/log/auth.log`)**
+- **GeoIP Enrichment** for source location
 
 ---
-

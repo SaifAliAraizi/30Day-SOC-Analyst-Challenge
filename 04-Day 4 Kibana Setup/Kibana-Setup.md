@@ -17,7 +17,7 @@ wget https://artifacts.elastic.co/downloads/kibana/kibana-9.1.5-amd64.deb
 sudo dpkg -i kibana-9.1.5-amd64.deb
 ```
 
-✅ *Kibana is installed under `/usr/share/kibana` and the kibana service unit is created.*
+✅ _Kibana is installed under `/usr/share/kibana` and the kibana service unit is created._
 
 ---
 
@@ -33,7 +33,7 @@ Update these values (use your VM’s private IP):
 
 ```yaml
 server.port: 5601
-server.host: "0.0.0.0"  # Replace with your VM private IP
+server.host: "0.0.0.0" # Replace with your VM private IP
 ```
 
 Save (`CTRL+X`, `Y`, `ENTER`).
@@ -79,10 +79,10 @@ sudo ufw reload
 
 Create/modify a firewall rule that allows inbound `tcp:5601` to your `elk-vm`. Example fields:
 
-* **Name:** `allow-kibana`
-* **Targets:** `elk-vm` (or tag)
-* **Source IP ranges:** `YOUR_PUBLIC_IP/32` (or `0.0.0.0/0` for testing)
-* **Protocols and ports:** `tcp:5601`
+- **Name:** `allow-kibana`
+- **Targets:** `elk-vm` (or tag)
+- **Source IP ranges:** `YOUR_PUBLIC_IP/32` (or `0.0.0.0/0` for testing)
+- **Protocols and ports:** `tcp:5601`
 
 > Tip: For production, restrict Source IP to only your management IP.
 
@@ -108,8 +108,8 @@ You should see the **Kibana Enrollment** page.
 
 #### **7. Connect Kibana to Elasticsearch**
 
-* Paste the **enrollment token** you generated earlier and click **Configure Elastic**.
-* If prompted for a verification code, run in the Kibana bin folder:
+- Paste the **enrollment token** you generated earlier and click **Configure Elastic**.
+- If prompted for a verification code, run in the Kibana bin folder:
 
 ```bash
 cd /usr/share/kibana/bin
@@ -181,10 +181,11 @@ sudo systemctl restart kibana
 
 ### 🧾 Key Takeaways
 
-* Kibana installed and configured to run on port **5601**.
-* Kibana successfully enrolled to Elasticsearch using the enrollment token.
-* Firewall rules (cloud + VM) must allow inbound `tcp:5601`.
-* Optional encryption keys secure saved objects, reporting, and sessions.
+- Kibana installed and configured to run on port **5601**.
+- Kibana successfully enrolled to Elasticsearch using the enrollment token.
+- Firewall rules (cloud + VM) must allow inbound `tcp:5601`.
+- Optional encryption keys secure saved objects, reporting, and sessions.
 
 ---
+
 ![Kibana Screenshot](../images/4-kibana.png)

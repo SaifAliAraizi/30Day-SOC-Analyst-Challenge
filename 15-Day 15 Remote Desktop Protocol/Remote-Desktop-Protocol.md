@@ -14,11 +14,11 @@ Remote Desktop Protocol (RDP) is one of the most commonly abused protocols in in
 
 ## TL;DR
 
-* RDP uses TCP and defaults to port **3389**.
-* Exposed RDP is a frequent initial access vector in ransomware and other intrusions.
-* Use Shodan and Censys to identify exposed hosts (`port:3389` or service filters).
-* Do **not** connect to or brute-force external RDP services — this is illegal and unethical.
-* Protect systems by turning RDP off when unused, enforcing MFA, restricting access (VPN/firewall), using strong passwords and PAM, and disabling default local admin accounts.
+- RDP uses TCP and defaults to port **3389**.
+- Exposed RDP is a frequent initial access vector in ransomware and other intrusions.
+- Use Shodan and Censys to identify exposed hosts (`port:3389` or service filters).
+- Do **not** connect to or brute-force external RDP services — this is illegal and unethical.
+- Protect systems by turning RDP off when unused, enforcing MFA, restricting access (VPN/firewall), using strong passwords and PAM, and disabling default local admin accounts.
 
 ---
 
@@ -28,17 +28,17 @@ RDP (Remote Desktop Protocol) is Microsoft’s protocol for remote graphical con
 
 **Key points:**
 
-* Operates over TCP (default port **3389**).
-* Commonly used for remote administration and troubleshooting.
-* Very convenient but high-risk when exposed to the Internet.
+- Operates over TCP (default port **3389**).
+- Commonly used for remote administration and troubleshooting.
+- Very convenient but high-risk when exposed to the Internet.
 
 ---
 
 ## Why people use RDP
 
-* Remote troubleshooting without physical access.
-* Remote work access for employees and admins.
-* Saves commute and speeds up operations.
+- Remote troubleshooting without physical access.
+- Remote work access for employees and admins.
+- Saves commute and speeds up operations.
 
 These conveniences make RDP attractive — both for legitimate use and for attackers.
 
@@ -62,17 +62,17 @@ Two useful public reconnaissance platforms are **Shodan** and **Censys**. They i
 
 **Example queries:**
 
-* Shodan search: `port:3389` — returns hosts where the scanner observed TCP/3389 open.
-* Censys search: `3389` then filter the `service_name` or `protocol` to refine results to RDP.
+- Shodan search: `port:3389` — returns hosts where the scanner observed TCP/3389 open.
+- Censys search: `3389` then filter the `service_name` or `protocol` to refine results to RDP.
 
 **Tips:**
 
-* Use additional filters (geography, ASN, product string, hostnames) to narrow results.
-* If you find your organization’s IPs exposed, open an internal ticket — do not attempt connecting or testing externally.
+- Use additional filters (geography, ASN, product string, hostnames) to narrow results.
+- If you find your organization’s IPs exposed, open an internal ticket — do not attempt connecting or testing externally.
 
 **Legal & ethical reminder:**
 
-* Do not connect to or attempt access against servers you do not own or have explicit authorization to test. Scanning and brute forcing third‑party hosts is illegal in many jurisdictions and against acceptable use policies.
+- Do not connect to or attempt access against servers you do not own or have explicit authorization to test. Scanning and brute forcing third‑party hosts is illegal in many jurisdictions and against acceptable use policies.
 
 ---
 
@@ -80,10 +80,10 @@ Two useful public reconnaissance platforms are **Shodan** and **Censys**. They i
 
 When you inspect a Shodan/Censys result look for:
 
-* Open port `3389`.
-* Service or product strings that indicate `RDP` or `Remote Desktop`.
-* Screenshots (sometimes indexed) that reveal hostnames or logged‑in users.
-* Associated services on the same host (e.g., 443, SSH, MySQL) which could indicate a multi‑service host.
+- Open port `3389`.
+- Service or product strings that indicate `RDP` or `Remote Desktop`.
+- Screenshots (sometimes indexed) that reveal hostnames or logged‑in users.
+- Associated services on the same host (e.g., 443, SSH, MySQL) which could indicate a multi‑service host.
 
 If you identify one of your public IPs:
 
@@ -98,23 +98,23 @@ If you identify one of your public IPs:
 
 1. **Turn it off when not required.**
 
-   * Developers often enable RDP and forget to disable it. Keep an inventory of systems and services.
+   - Developers often enable RDP and forget to disable it. Keep an inventory of systems and services.
 
 2. **Use Multi‑Factor Authentication (MFA).**
 
-   * Apply MFA for accounts that can authenticate via RDP (where supported by your stack or via gateway solutions).
+   - Apply MFA for accounts that can authenticate via RDP (where supported by your stack or via gateway solutions).
 
 3. **Restrict access (VPN / firewall / allowlists).**
 
-   * Only allow RDP from known IP ranges or force connections through an internal VPN or bastion host.
+   - Only allow RDP from known IP ranges or force connections through an internal VPN or bastion host.
 
 4. **Use better password hygiene and PAM.**
 
-   * Enforce long passwords (15+ chars) and use password managers. Prefer time‑bound or one‑time credentials delivered via a Privileged Access Management (PAM) solution.
+   - Enforce long passwords (15+ chars) and use password managers. Prefer time‑bound or one‑time credentials delivered via a Privileged Access Management (PAM) solution.
 
 5. **Disable default accounts / rename administrators.**
 
-   * Remove or disable built‑in local accounts where possible and create named admin accounts instead.
+   - Remove or disable built‑in local accounts where possible and create named admin accounts instead.
 
 **Note:** Passwords and account renaming do not fully stop credential stuffing. Combine controls (MFA, network restrictions, PAM) for defense in depth.
 
@@ -122,12 +122,12 @@ If you identify one of your public IPs:
 
 ## Detection ideas & alerting (high level)
 
-* **Brute force / multiple failed logins:** Alert when a single source has many failed RDP authentication attempts in a short time window.
-* **Unusual successful logins:** Alert on successful RDP logins from geographies your org does not operate in.
-* **New RDP host appearing externally:** Alert when a new public IP reports `port:3389` or RDP in your asset scans.
-* **Credential dumping & lateral movement:** Watch for processes and tools commonly used for credential dumping after an RDP session.
+- **Brute force / multiple failed logins:** Alert when a single source has many failed RDP authentication attempts in a short time window.
+- **Unusual successful logins:** Alert on successful RDP logins from geographies your org does not operate in.
+- **New RDP host appearing externally:** Alert when a new public IP reports `port:3389` or RDP in your asset scans.
+- **Credential dumping & lateral movement:** Watch for processes and tools commonly used for credential dumping after an RDP session.
 
-*In the next session (video) we’ll build a concrete RDP Brute‑Force detection rule and test it with the Windows Server logs from our cloud lab.*
+_In the next session (video) we’ll build a concrete RDP Brute‑Force detection rule and test it with the Windows Server logs from our cloud lab._
 
 ---
 
@@ -153,9 +153,9 @@ If you identify one of your public IPs:
 
 ## Additional notes & resources
 
-* Do not attempt offensive testing against hosts you do not own — spin up your own RDP test server if you want to practice brute‑force detection safely.
-* Use publicly available scanners for asset discovery (Shodan/Censys) only for reconnaissance and inventory — never for unauthorized access.
-* In the next video we will implement a Kibana/Elastic alert for RDP brute‑force attempts and review the Windows Server logs from the cloud lab.
+- Do not attempt offensive testing against hosts you do not own — spin up your own RDP test server if you want to practice brute‑force detection safely.
+- Use publicly available scanners for asset discovery (Shodan/Censys) only for reconnaissance and inventory — never for unauthorized access.
+- In the next video we will implement a Kibana/Elastic alert for RDP brute‑force attempts and review the Windows Server logs from the cloud lab.
 
 ---
 

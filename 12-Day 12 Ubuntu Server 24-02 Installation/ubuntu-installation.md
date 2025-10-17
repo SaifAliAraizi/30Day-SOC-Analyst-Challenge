@@ -28,9 +28,9 @@ This single-file lesson (ready to paste into a `.md` file) walks you step-by-ste
 
 ## Prerequisites
 
-* A cloud provider account (Vultr, AWS, GCP, DigitalOcean, etc.). The demo uses **Vultr** as an example.
-* Basic familiarity with SSH and a terminal (PowerShell, macOS Terminal, or Linux shell).
-* Optional: small wordlist and a lab attacker VM if you want to test detection locally (only in a lab you control).
+- A cloud provider account (Vultr, AWS, GCP, DigitalOcean, etc.). The demo uses **Vultr** as an example.
+- Basic familiarity with SSH and a terminal (PowerShell, macOS Terminal, or Linux shell).
+- Optional: small wordlist and a lab attacker VM if you want to test detection locally (only in a lab you control).
 
 ## Deploying the VM (example: Vultr)
 
@@ -67,8 +67,8 @@ clear
 
 ## Authentication logs location and basics
 
-* Authentication-related logs are stored in: `/var/log/auth.log` (on Debian/Ubuntu systems).
-* Other useful logs in `/var/log/` include `syslog`, `kern.log`, and service-specific logs.
+- Authentication-related logs are stored in: `/var/log/auth.log` (on Debian/Ubuntu systems).
+- Other useful logs in `/var/log/` include `syslog`, `kern.log`, and service-specific logs.
 
 Quick check:
 
@@ -122,19 +122,19 @@ Oct 12 03:14:21 mydfir-linux-root sshd[1234]: Failed password for root from 203.
 
 Split by spaces:
 
-* Field 1: `Oct`
-* Field 2: `12`
-* Field 3: `03:14:21`
-* Field 4: `mydfir-linux-root`
-* Field 5: `sshd[1234]:`
-* Field 6: `Failed`
-* Field 7: `password`
-* Field 8: `for`
-* Field 9: `root`
-* Field 10: `from`
-* Field 11: `203.0.113.45`
-* Field 12: `port`
-* Field 13: `54722`
+- Field 1: `Oct`
+- Field 2: `12`
+- Field 3: `03:14:21`
+- Field 4: `mydfir-linux-root`
+- Field 5: `sshd[1234]:`
+- Field 6: `Failed`
+- Field 7: `password`
+- Field 8: `for`
+- Field 9: `root`
+- Field 10: `from`
+- Field 11: `203.0.113.45`
+- Field 12: `port`
+- Field 13: `54722`
 
 So to extract the **IP** (here field 11):
 
@@ -172,18 +172,17 @@ grep -i "failed" /var/log/auth.log | awk '{ for(i=1;i<=NF;i++) if ($i == "from")
 
 This pipeline:
 
-* extracts IPs after the token `from`,
-* sorts them,
-* counts unique occurrences,
-* and sorts the counts in descending order.
+- extracts IPs after the token `from`,
+- sorts them,
+- counts unique occurrences,
+- and sorts the counts in descending order.
 
 ## Conclusion & next steps
 
 You have now:
 
-* Deployed a minimal SSH server in the cloud,
-* Connected to it via SSH,
-* Located and inspected authentication logs at `/var/log/auth.log`,
-* Used `grep`, `cut`, and `awk` to filter and extract failed login events and attacker IPs,
-* Learned how to monitor logs in real time with `tail -f`.
-
+- Deployed a minimal SSH server in the cloud,
+- Connected to it via SSH,
+- Located and inspected authentication logs at `/var/log/auth.log`,
+- Used `grep`, `cut`, and `awk` to filter and extract failed login events and attacker IPs,
+- Learned how to monitor logs in real time with `tail -f`.
