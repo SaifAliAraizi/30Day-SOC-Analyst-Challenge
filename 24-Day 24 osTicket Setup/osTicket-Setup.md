@@ -12,13 +12,13 @@ Set up a **fully functional osTicket instance** on a cloud Windows Server (Windo
 
 ## 🧱 Step 1: Deploy a Windows Server on Vultr
 
-1. Log in to [Vultr](https://www.vultr.com).
+1. Log in to [Google Cloud Service](https://console.cloud.google.com/).
 2. Click **Deploy** → **Deploy New Server**.
 3. Under **Compute Type**, select:
    - **Cloud Compute (Shared CPU)**
-4. Choose your **location** (e.g., *Toronto*).
+4. Choose your **location** (e.g., *us-central1a*).
 5. For **Operating System**, select:
-   - **Windows Standard 2022**
+   - **Windows server 2022**
 6. Choose a plan (minimum requirements):
    - **1 vCPU**
    - **2 GB RAM**
@@ -31,7 +31,7 @@ Set up a **fully functional osTicket instance** on a cloud Windows Server (Windo
 9. Keep the Firewall Group empty for now.
 10. Set hostname:
    ```
-   mydfir-osticket
+   osticket-vm
    ```
 11. Click **Deploy Now** and wait for provisioning (~6 minutes).
 
