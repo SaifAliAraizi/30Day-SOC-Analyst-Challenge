@@ -1,0 +1,30 @@
+Brute Force -  182.177.133.84 - araizii007
+
+
+resources to check IP:
+https://www.abuseipdb.com/
+https://www.greynoise.io/
+
+- IP - Is this IP known to perform brute force activity?
+- Nither in abuseipdb nor in greynoise -- NO
+
+Paste the Ip in Kibana Discover(182.177.133.84):
+
+- Any other users affected by this IP? 
+- Yes [user.name(WINDOWS-SERVER, araizii007)]
+
+paste the IP in Kibana Discover with Accepted (182.177.133.84 and event.code: 4624):
+
+- Were any of the successful?
+- Yes
+
+- If so, what activity occurred after the successful login?
+- Oct 15, 2025 Asia/karachi. An account was successfully logged on. Subject: Security ID: S-1-5-18 Account Name: WINDOWS-SERVER-$
+
+- What happened here?
+- Potential End Time: 	Oct 15, 2025 Asia/Karachi. An account was logged off.
+
+
+
+elastic-documentation:
+https://www.elastic.co/docs/solutions/security/detect-and-alert/create-detection-rule#rule-action-variables

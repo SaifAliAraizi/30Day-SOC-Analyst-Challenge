@@ -1,0 +1,27 @@
+! I have no alerts on ssh so I am using ip address of RDp for example
+Brute Force -  182.177.133.84 - root
+
+
+resources to check IP:
+https://www.abuseipdb.com/
+https://www.greynoise.io/
+
+- IP - Is this IP known to perform brute force activity?
+- No
+
+Paste the Ip in Kibana Discover(182.177.133.84):
+
+- Any other users affected by this IP? 
+- Yes [user.name(WINDOWS-SERVER, araizii007)]
+
+paste the IP in Kibana Discover with Accepted (182.177.133.84 and Accepted):
+
+- Were any of the successful?
+- No
+
+- If so, what activity occurred after the successful login?
+- Nothing.
+
+
+elastic-documentation:
+https://www.elastic.co/docs/solutions/security/detect-and-alert/create-detection-rule#rule-action-variables

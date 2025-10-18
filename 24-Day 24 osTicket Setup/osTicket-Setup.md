@@ -6,6 +6,7 @@ By the end of this session, you will have successfully **set up and configured o
 ---
 
 ## 🎯 Objective
+
 Set up a **fully functional osTicket instance** on a cloud Windows Server (Windows Standard 2022) using **XAMPP** as the local web and database server.
 
 ---
@@ -16,7 +17,7 @@ Set up a **fully functional osTicket instance** on a cloud Windows Server (Windo
 2. Click **Deploy** → **Deploy New Server**.
 3. Under **Compute Type**, select:
    - **Cloud Compute (Shared CPU)**
-4. Choose your **location** (e.g., *us-central1a*).
+4. Choose your **location** (e.g., _us-central1a_).
 5. For **Operating System**, select:
    - **Windows server 2022**
 6. Choose a plan (minimum requirements):
@@ -30,9 +31,11 @@ Set up a **fully functional osTicket instance** on a cloud Windows Server (Windo
    - Virtual Private Cloud (VPC)
 9. Keep the Firewall Group empty for now.
 10. Set hostname:
-   ```
-   osticket-vm
-   ```
+
+```
+osticket-vm
+```
+
 11. Click **Deploy Now** and wait for provisioning (~6 minutes).
 
 ---
@@ -51,11 +54,12 @@ Set up a **fully functional osTicket instance** on a cloud Windows Server (Windo
 Since osTicket will be a web server accessible externally:
 
 1. Go to **Vultr → Settings → Firewall**.
-2. Create or attach a firewall (e.g., *30-Day MyDFIR SOC Challenge Firewall*).
+2. Create or attach a firewall (e.g., _30-Day MyDFIR SOC Challenge Firewall_).
 3. Allow only **authorized IPs** (your analyst machine) to access the web server.
 4. Later, ensure ports **80** (HTTP) and **443** (HTTPS) are open.
 
 ---
+
 ## ![Configure Firewall](../images/24-osTicket.png)
 
 ## ⚙️ Step 4: Install XAMPP (Web Server)
@@ -137,6 +141,7 @@ Since osTicket will be a web server accessible externally:
 3. Click **Admin** under Apache → open browser → select **phpMyAdmin**.
 
 If you see:
+
 > "Cannot connect: invalid settings"
 
 You need to revert configuration and authorize access properly.
@@ -196,6 +201,7 @@ Update their credentials in `config.inc.php` accordingly.
 4. Refresh installer page.
 
 ---
+
 ## ![osTicket](../images/24-osTicket2.png)
 
 ## 🧩 Step 11: Configure osTicket
@@ -233,6 +239,7 @@ Retry osTicket installation afterward.
 ## ✅ Step 13: Finalize Installation
 
 Once completed, you’ll see:
+
 > “Congratulations! Your osTicket installation has been completed successfully.”
 
 Run PowerShell as Administrator and reset permissions:
@@ -243,9 +250,11 @@ icacls .\ost-config.php /reset
 ```
 
 You should see:
+
 > “Successfully processed 1 file.”
 
 ---
+
 ## ![osTicket](../images/24-osTicke3.png)
 
 ## 🌐 Step 14: Access osTicket
@@ -262,6 +271,7 @@ osTicket provides two main URLs:
   ```
 
 Log in with:
+
 ```
 Username: mydfir
 Password: Winter2024!
@@ -272,6 +282,7 @@ Password: Winter2024!
 ## 👨‍💼 Step 15: Admin Configuration
 
 Once logged in:
+
 - Navigate to **Admin Panel** (top right).
 - Customize:
   - System name & title
@@ -280,6 +291,7 @@ Once logged in:
 - You can now start managing tickets.
 
 ---
+
 ## ![osTicket](../images/24-osTicke4.png)
 
 ## 🧩 Summary
@@ -289,7 +301,7 @@ You have successfully:
 ✅ Installed and configured XAMPP  
 ✅ Fixed phpMyAdmin access permissions  
 ✅ Installed and configured osTicket  
-✅ Verified functionality and admin access  
+✅ Verified functionality and admin access
 
 ---
 
