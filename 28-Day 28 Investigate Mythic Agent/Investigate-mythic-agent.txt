@@ -1,0 +1,11 @@
+Timeline
+
+From event.code: 3 and ip address: 224.0.0.251 we get;
+Oct 8, 2025 @ 13:24:50 - Network Connection towards 224.0.0.251
+and 450 more results shown in picture.
+
+From ProcessGuid: "{B1980519-068C-68E5-2D00-000000000700}" command we get:
+Oct 8, 2025 @ 14:25:22 - DNS Query
+12 more results of Network connection
+
+PID: 7,848

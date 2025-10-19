@@ -15,7 +15,7 @@ Deploy and configure **Elasticsearch** on a cloud-hosted Ubuntu VM (Vultr or Goo
 
   - **Region:** Toronto (or same region as your VM)
   - **IP Range:** `172.31.0.0/24`
-  - **Name:** `mydef-soc-challenge`
+  - **Name:** `araizii-soc-challenge`
 
 - ✅ _Ensure all VMs (Elasticsearch, Kibana, SOC Analyst, etc.) are in the same region._
 
